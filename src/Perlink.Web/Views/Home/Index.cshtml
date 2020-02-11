@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div>
+    <form method="POST" action="http://localhost:5000/api/Home" name="form1" id="form1">
+        <div class="fields">
+            <div class="field">
+                <input type="text" name="SuitNumber" id="SuitNumber" placeholder="Numero do Processo" />
+            </div>
+            <div class="field">
+                <input type="text" name="dataCriacaoProcesso" id="dataCriacaoProcesso" placeholder="Data de Criação do Processo" />
+            </div>
+            <div class="field">
+                <input type="text" name="valor" id="valor" placeholder="Valor do Processo" />
+            </div>
+            <div class="field">
+                <select name="lawoffice" id="lawoffice">
+                    <option value="officeMG">Juridico Minas</option>
+                    <option value="officeRJ">Juridico Rio</option>
+                    <option value="officeSP">Juridico So Paulo</option>
+                    <option value=""></option>
+                </select>
+            </div>
+        </div>
+        <ul class="actions special">
+            <li><input type="submit" class="btn btn-success" value="Submit" /></li>
+        </ul>
+    </form>
+</div>
+<script>
+    function sendRequest2(form1) {
+        var requestData = { 
+            "numeroprocesso" : $("#numeroprocesso").val(),
+            "dataCriacaoProcesso" : $("#dataCriacaoProcesso").val(),
+            "valor" : $("#valor").val(),
+            "lawoffice" : $("#lawoffice").val(),
+        };
+
+        xhttp = new XMLHttpRequest();
+        xhttp.open(form1.method, form1.action);
+        xhttp.setRequestHeader("Content-Type", "application-json");
+        xhttp.send(JSON.stringify(requestData));
+    }
+</script>
