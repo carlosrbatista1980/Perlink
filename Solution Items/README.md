@@ -1,50 +1,38 @@
-﻿server=localhost;userid=developer;password123;database=desafioqsti
-
-
-# Desafio
-Este desafio tem por objetivo avaliar seus conhecimentos em C#.
-
 ## Sobre o sistema
-Neste desafio deverá ser criado um sistema simples onde poderemos cadastrar as aplicações, em que cliente está instalado e em que versão.
-Também será possível registrar um log de quando foi executada a aplicação.
+Desafio da Perlink
 
-Crie uma aplicação web usando Asp.Net Mvc ou WebApi em C#, onde terão as seguintes tabelas no MySql.
+Inicio dos trabalhos 11/02/2020
+Entrega 13/02/2020
 
+A solução proposta está estruturada com a separação de camadas entre:
+Web --> Servicos
+Servicos --> Data
 
-|  **Servico** |
-| ------------ |
-| Id  |
-| Nome  |
-| Descricao  |
+## Iniciar o banco de dados:
+- carregue a solução no Visual studio 2019 e aguarde até que os componentes sejam carregados
+- na janela do "Package Manager Console" execute o comando "Update-Database"
+para criar a base de dados (não esqueça de configurar a conexão no MySql workbench)
+Usuario : "sa"
+senha : "sa"
 
+lembrando que é necessário levantar o sistema pelo menos uma vez para que o Seed pré Cadastre
+alguns dados de exemplo.
 
-|**Cliente**|
-| ------------ |
-|Id|
-|Nome|
+## Iniciando a solução:
+navegue até a pasta "src\Perlink.Web\bin\Debug\netcoreapp2.2"
+faça o comando : dotnet Perlink.Web.dll
+ou simplesmente utilizar o arquivos batch "build.cmd"
+em poucos segundos o servidor ficará disponivel podendo ser acessado em: localhost:5000
 
+use o postman para enviar dados json para a Api como mostra o exemplo abaixo:
+Endereço: http://localhost:5000/api/Main
 
-|**ServicoCliente**|
-| ------------ |
-|Id|
-|IdServico|
-|IdCliente|
-|Versao|
+{
+    "NumeroDoProcesso": "001002003",
+    "dataDeCriacaoDoProcesso": "2019-01-01",
+    "valor": "55",
+    "escritorioId": "2"
+}
 
-**ExecucaoServico**
-| ------------ |
-|Id|
-|IdServicoCliente|
-|DataHora|
-
-
-Crie algum tipo de autenticação para que somente usuários autenticados possam administrar esses dados.
-
-Você está livre para criar mais tabelas, usar algum tipo de ORM, segurança com Jwt, ddd, angular, ionic e etc
-
-Estarei avaliando sua criatividade e organização de código.
-
-
-Adicione seu projeto no github e me envie por e-mail paulo@qsti.com.br
-
-Boa sorte!
+é possivel observar a atualização dos dados na aba de Relatórios.
+pois a tela faz um refresh a cada 10 segundos.
